@@ -1,0 +1,8 @@
+{
+  "name": "Pattern Fill",
+  "id": "1067417425616378100",
+  "api": "1.0.0",
+  "main": "code.js",
+  "editorType": ["figma", "figjam"],
+  "ui": "ui.html"
+}

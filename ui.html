@@ -1,0 +1,94 @@
+<style>
+  :root {
+    font-family: sans-serif;
+    font-size: 14px;
+  }
+  a {
+    text-decoration: none;
+    color: #18a0fb;
+    cursor: pointer;
+  }
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  p.info {
+    font-size: 12px;
+    opacity: 0.75;
+  }
+  .layer-name {
+    margin-left: 2px;
+    padding: 2px;
+    border-bottom: 1px dashed #ddd;
+  }
+  .primary-button {
+    min-width: 100px;
+    height: 30px;
+    margin: 20px 0;
+    display: block;
+  }
+  .layer-order {
+    margin: 10px 0 10px;
+    padding: 6px 10px;
+    border-radius: 2px;
+    background: #fafafa;
+  }
+  .layer-order p {
+    line-height: 2;
+  }
+  .layer-order .subtitle {
+    opacity: 0.4;
+    min-width: 40px;
+    display: inline-block;
+  }
+  #exchange {
+    font-size: 13px;
+  }
+</style>
+
+<p class="info">Choose 2 layers and set the order, then click "Go".</p>
+<div class="layer-order">
+  <p>
+    <span class="subtitle">from</span
+    ><span class="layer-name" id="origin-layer"></span>
+  </p>
+  <p>
+    <span class="subtitle">to</span
+    ><span class="layer-name" id="target-layer"></span>
+  </p>
+</div>
+<a id="exchange">⇌ Exchange order</a>
+<button id="create" class="primary-button">Go</button>
+<script>
+  let order = false;
+  let layerArray, originLayer, targetLayer;
+
+  function showOrder(order) {
+    // console.log("order is " + order);
+    if (order) {
+      document.getElementById("origin-layer").innerHTML = layerArray[1];
+      document.getElementById("target-layer").innerHTML = layerArray[0];
+    } else {
+      document.getElementById("origin-layer").innerHTML = layerArray[0];
+      document.getElementById("target-layer").innerHTML = layerArray[1];
+    }
+  }
+
+  onmessage = (event) => {
+    layerArray = event.data.pluginMessage;
+    console.log("got this from the plugin code", layerArray);
+    showOrder(order);
+  };
+
+  document.getElementById("exchange").onclick = () => {
+    order = !order;
+    // console.log(order);
+    showOrder(order);
+  };
+  document.getElementById("create").onclick = () => {
+    parent.postMessage(
+      { pluginMessage: { type: "selection-order", order } },
+      "*"
+    );
+  };
+</script>

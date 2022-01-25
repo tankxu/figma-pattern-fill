@@ -1,0 +1,14 @@
+{
+  "name": "Pattern-Fill",
+  "version": "1.0.0",
+  "description": "The fast way to create and use pattern.",
+  "main": "code.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "author": "tankxu",
+  "license": "",
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.41.1"
+  }
+}
