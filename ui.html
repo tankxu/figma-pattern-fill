@@ -1,7 +1,11 @@
 <style>
   :root {
-    font-family: sans-serif;
+    font-family: Inter, sans-serif;
     font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+  }
+  body {
+    margin: 14px;
   }
   a {
     text-decoration: none;
@@ -18,31 +22,55 @@
   }
   .layer-name {
     margin-left: 2px;
-    padding: 2px;
+    padding: 3px 2px 2px;
     border-bottom: 1px dashed #ddd;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-height: 1.2;
   }
   .primary-button {
     min-width: 100px;
     height: 30px;
     margin: 20px 0;
     display: block;
+    cursor: pointer;
+    background: #18a0fb;
+    border: 1px solid #18a0fb;
+    border-radius: 6px;
+    padding: 0 16px;
+    color: #fff;
+    font-size: 11px;
+    box-sizing: border-box;
+  }
+  .primary-button:hover {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    padding: 0 15px;
   }
   .layer-order {
-    margin: 10px 0 10px;
-    padding: 6px 10px;
+    margin: 10px 0;
+    padding: 6px 12px 8px;
     border-radius: 2px;
     background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
   .layer-order p {
     line-height: 2;
+    display: flex;
+    align-items: center;
   }
   .layer-order .subtitle {
-    opacity: 0.4;
+    opacity: 0.6;
     min-width: 40px;
-    display: inline-block;
+    font-weight: 500;
   }
   #exchange {
     font-size: 13px;
+  }
+  #exchange:hover {
+    font-weight: 500;
   }
 </style>
 
