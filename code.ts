@@ -27,6 +27,10 @@ function main() {
         return;
       }
 
+      if (targetLayer.type == "SLICE") {
+        figma.closePlugin("⚠️ Slice layer cannot be set as target.");
+        return;
+      }
       console.log(originLayer);
 
       originLayer
